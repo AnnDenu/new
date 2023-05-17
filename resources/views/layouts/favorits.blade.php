@@ -8,22 +8,22 @@
                             <p class="text-white">{{ $message }}</p>
                         </div>
                     @endif
-                    <h3 class="text-3xl font-bold">Courses</h3>
+                    <h3 class="text-3xl font-bold">Избранное</h3>
                     <div class="flex-1">
                         <table class="w-full text-sm lg:text-base" cellspacing="0">
                             <thead>
                                 <tr class="h-12 uppercase">
                                     <th class="hidden md:table-cell"></th>
-                                    <th class="text-left">Name</th>
+                                    <th class="text-left">Наименование</th>
                                     <th class="pl-5 text-left lg:text-right lg:pl-0">
                                         <span class="lg:hidden" title="Quantity">Qtd</span>
                                         <span class="hidden lg:inline">Quantity</span>
                                     </th>
-                                    <th class="hidden text-right md:table-cell"> Удалить </th>
+                                    <th class="hidden text-right md:table-cell"> Remove </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($coursesItems as $item)
+                                @foreach ($favoritsItems as $item)
                                     <tr>
                                         <td class="hidden pb-4 md:table-cell" style="width:230px;">
                                             <a href="#">
@@ -47,11 +47,6 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td class="hidden text-right md:table-cell">
-                                            <span class="text-sm font-medium lg:text-base">
-                                                ${{ $item->price }}
-                                            </span>
                                         </td>
                                         <td class="hidden text-right md:table-cell">
                                             <form action="{{ route('cart.remove') }}" method="POST">

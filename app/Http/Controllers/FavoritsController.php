@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Favorits;
+use App\Http\Controllers\favorits;
 use Illuminate\Http\Request;
 class FavoritsController extends Controller
 {
     public function FavoritsList()
     {
-        $FavoritsItems = \Favorits::getContent();
+        $FavoritsItems = favorits::getContent();
         return view('Favorits', compact('FavoritsItems'));
     }
 //добавление избранного
     public function addToFavorits(Request $request)
     {
-        \Favorits::add([
+        favorits::add([
             'id' => $request->id,
             'name' => $request->name,
             'quantity' => $request->quantity,
@@ -28,7 +28,7 @@ class FavoritsController extends Controller
 //обновление избранного
     public function updateFavorits(Request $request)
     {
-        \Favorits::update(
+        favorits::update(
             $request->id,
             [
                 'quantity' => [
@@ -43,14 +43,14 @@ class FavoritsController extends Controller
 //удаление избранного
     public function removeFavorits(Request $request)
     {
-        \Favorits::remove($request->id);
+        \favorits::remove($request->id);
         session()->flash('success', 'Item Favorits Remove Successfully !');
         return redirect()->route('Favorits.list');
     }
 //Очистка избранного
     public function clearAllFavorits()
     {
-        \Favorits::clear();
+        \favorits::clear();
         session()->flash('success', 'All Item Favorits Clear Successfully !');
         return redirect()->route('Favorits.list');
     }
