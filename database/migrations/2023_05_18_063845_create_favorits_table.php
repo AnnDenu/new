@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('favorits', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->unsignedBigInteger('courses_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+        
+            $table->foreign('courses_id')->references('id')->on('courses');
         });
     }
 
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('favorits');
     }
 };

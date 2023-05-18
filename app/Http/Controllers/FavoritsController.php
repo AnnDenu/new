@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\favorits;
+use App\Models\favorits;
 use Illuminate\Http\Request;
 class FavoritsController extends Controller
 {
@@ -28,7 +28,7 @@ class FavoritsController extends Controller
 //обновление избранного
     public function updateFavorits(Request $request)
     {
-        favorits::update(
+        \favorits::update(
             $request->id,
             [
                 'quantity' => [

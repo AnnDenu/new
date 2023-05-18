@@ -26,6 +26,10 @@ Route::post('update-favotits', [FavotitsController::class, 'updateFavotits'])->n
 Route::post('remove', [FavotitsController::class, 'removeFavotits'])->name('favotits.remove');
 Route::post('clear', [FavotitsController::class, 'clearAllFavotits'])->name('favotits.clear');
 
+
+Route::get('/courses', function (){
+    return view('courses');
+})->middleware(['auth', 'verified'])->name('courses');
 //авторизация
 Route::get('/dashboard', function () {
     return view('dashboard');
