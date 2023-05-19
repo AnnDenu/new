@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\FavoritsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FavotitsController;
-use App\Http\Controllers\CoursesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,21 +15,17 @@ use App\Http\Controllers\CoursesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 //избранное
-Route::get('courses', [CoursesController::class, 'coursesList'])->name('courses.list');
-Route::get('favotits', [FavotitsController::class, 'favotitsList'])->name('favotits.list');
-Route::post('favotits', [FavotitsController::class, 'addToFavotits'])->name('favotits.store');
-Route::post('update-favotits', [FavotitsController::class, 'updateFavotits'])->name('favotits.update');
-Route::post('remove', [FavotitsController::class, 'removeFavotits'])->name('favotits.remove');
-Route::post('clear', [FavotitsController::class, 'clearAllFavotits'])->name('favotits.clear');
+Route::get('/', [CoursesController::class, 'coursesList'])->name('courses.list');
+Route::get('favotits', [FavoritsController::class, 'favoritsList'])->name('favorits.list');
+Route::post('favotits', [FavoritsController::class, 'addToFavorits'])->name('favorits.store');
+Route::post('update-favotits', [FavoritsController::class, 'updateFavorits'])->name('favorits.update');
+Route::post('remove', [FavoritsController::class, 'removeFavorits'])->name('favorits.remove');
+Route::post('clear', [FavoritsController::class, 'clearAllFavorits'])->name('favorits.clear');
 
-
-Route::get('/courses', function (){
-    return view('courses');
-})->middleware(['auth', 'verified'])->name('courses');
 //авторизация
 Route::get('/dashboard', function () {
     return view('dashboard');

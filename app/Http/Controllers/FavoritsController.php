@@ -8,11 +8,11 @@ class FavoritsController extends Controller
 {
     public function FavoritsList()
     {
-        $FavoritsItems = favorits::getContent();
-        return view('Favorits', compact('FavoritsItems'));
+        $favoritsItems = favorits::getContent();
+        return view('favorits', compact('favoritsItems'));
     }
 //добавление избранного
-    public function addToFavorits(Request $request)
+    public static function addToFavorits(Request $request)
     {
         favorits::add([
             'id' => $request->id,
@@ -22,8 +22,8 @@ class FavoritsController extends Controller
                 'image' => $request->image,
             )
         ]);
-        session()->flash('success', 'Product is Added to Favorits Successfully !');
-        return redirect()->route('Favorits.list');
+        session()->flash('success', 'Курс добавлен в избранное успешно!');
+        return redirect()->route('favorits.list');
     }
 //обновление избранного
     public function updateFavorits(Request $request)
@@ -37,21 +37,21 @@ class FavoritsController extends Controller
                 ],
             ]
         );
-        session()->flash('success', 'Item Favorits is Updated Successfully !');
-        return redirect()->route('Favorits.list');
+        session()->flash('success', 'Успешно обновлено!');
+        return redirect()->route('favorits.list');
     }
 //удаление избранного
     public function removeFavorits(Request $request)
     {
         \favorits::remove($request->id);
         session()->flash('success', 'Item Favorits Remove Successfully !');
-        return redirect()->route('Favorits.list');
+        return redirect()->route('favorits.list');
     }
 //Очистка избранного
     public function clearAllFavorits()
     {
         \favorits::clear();
-        session()->flash('success', 'All Item Favorits Clear Successfully !');
-        return redirect()->route('Favorits.list');
+        session()->flash('success', 'Очищено успешно!');
+        return redirect()->route('favorits.list');
     }
 }

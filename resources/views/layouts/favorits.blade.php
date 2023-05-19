@@ -14,7 +14,7 @@
                             <thead>
                                 <tr class="h-12 uppercase">
                                     <th class="hidden md:table-cell"></th>
-                                    <th class="text-left">Наименование</th>
+                                    <th class="text-left">Название</th>
                                     <th class="pl-5 text-left lg:text-right lg:pl-0">
                                         <span class="lg:hidden" title="Quantity">Qtd</span>
                                         <span class="hidden lg:inline">Quantity</span>
@@ -38,7 +38,7 @@
                                         <td class="justify-center mt-6 md:justify-end md:flex">
                                             <div class="h-10 w-28">
                                                 <div class="relative flex flex-row w-full h-8">
-                                                    <form action="{{ route('cart.update') }}" method="POST">
+                                                    <form action="{{ route('favorits.update') }}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $item->id}}" class="" >
                                                         <input type="number" name="quantity" value="{{ $item->quantity }}" 
@@ -49,7 +49,7 @@
                                             </div>
                                         </td>
                                         <td class="hidden text-right md:table-cell">
-                                            <form action="{{ route('cart.remove') }}" method="POST">
+                                            <form action="{{ route('favorits.remove') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" value="{{ $item->id }}" name="id">
                                                 <button class="px-3 py-1 text-white bg-gray-800 shadow rounded-full">x</button>
@@ -60,11 +60,11 @@
                             </tbody>
                         </table>
                         <div class="flex justify-between items-center my-5">
-                            <div class="font-semibold text-2xl">Total: ${{ Cart::getTotal() }}</div>
+                            <div class="font-semibold text-2xl">Total: ${{ Favorits::getTotal() }}</div>
                             <div>
-                                <form action="{{ route('cart.clear') }}" method="POST">
+                                <form action="{{ route('favorits.clear') }}" method="POST">
                                     @csrf
-                                    <button class="px-6 py-2 text-sm  rounded shadow text-red-100 bg-gray-800">Очистить</button>
+                                    <button class="px-6 py-2 text-sm  rounded shadow text-red-100 bg-gray-800">Очистить избранное</button>
                                 </form>
                             </div>
                         </div>
