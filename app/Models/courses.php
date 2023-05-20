@@ -16,8 +16,8 @@ class courses extends Model
         'description',
     ];
 
-    public function favorits(){
-        return $this->balongTo(favorits::class);
+    public function favorit(){
+        return $this->balongTo(favorit::class);
     }
 
     

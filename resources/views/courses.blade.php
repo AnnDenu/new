@@ -13,13 +13,13 @@
                     <div class="flex items-center justify-between mb-5">
                         <h3 class="text-gray-700 uppercase">{{ $course->name }}</h3>
                     </div>
-                    <form action="{{ route('favorits.store') }}" method="POST" enctype="multipart/form-data" class="flex justify-end">
+                    <form action="{{ route('favorit.store') }}" method="POST" enctype="multipart/form-data" class="flex justify-end">
                         @csrf
                         <input type="hidden" value="{{ $course->id }}" name="id">
                         <input type="hidden" value="{{ $course->name }}" name="name">
                         <input type="hidden" value="{{ $course->image }}"  name="image">
                         <input type="hidden" value="1" name="quantity">
-                        <button class="px-4 py-1.5 text-white text-sm bg-gray-900 rounded" style = 'color: black;'>Добавить в избранное</button>
+                        <button class="px-4 py-1.5 text-white text-sm bg-gray-900 rounded">Добавить в избранное</button>
                     </form>
                 </div>
                 

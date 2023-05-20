@@ -2,33 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\favorits;
 use Illuminate\Http\Request;
+
 class FavoritsController extends Controller
 {
-    public function FavoritsList()
+    public function favoritList()
     {
-        $favoritsItems = favorits::getContent();
-        return view('favorits', compact('favoritsItems'));
+        $favoritItems = \favorit::getContent();
+        return view('favorit', compact('favoritItems'));
     }
-//добавление избранного
-    public static function addToFavorits(Request $request)
+
+    public function addToFavorit(Request $request)
     {
-        favorits::add([
+        \favorit::add([
             'id' => $request->id,
             'name' => $request->name,
+            'price' => $request->price,
             'quantity' => $request->quantity,
             'attributes' => array(
                 'image' => $request->image,
             )
         ]);
-        session()->flash('success', 'Курс добавлен в избранное успешно!');
-        return redirect()->route('favorits.list');
+        session()->flash('success', 'Product is Added to Favorit Successfully !');
+        return redirect()->route('favorit.list');
     }
-//обновление избранного
-    public function updateFavorits(Request $request)
+
+    public function updateFavorit(Request $request)
     {
-        \favorits::update(
+        \favorit::update(
             $request->id,
             [
                 'quantity' => [
@@ -37,21 +38,21 @@ class FavoritsController extends Controller
                 ],
             ]
         );
-        session()->flash('success', 'Успешно обновлено!');
-        return redirect()->route('favorits.list');
+        session()->flash('success', 'Item Favorit is Updated Successfully !');
+        return redirect()->route('favorit.list');
     }
-//удаление избранного
-    public function removeFavorits(Request $request)
+
+    public function removeFavorit(Request $request)
     {
-        \favorits::remove($request->id);
-        session()->flash('success', 'Item Favorits Remove Successfully !');
-        return redirect()->route('favorits.list');
+        \favorit::remove($request->id);
+        session()->flash('success', 'Item Favorit Remove Successfully !');
+        return redirect()->route('favorit.list');
     }
-//Очистка избранного
-    public function clearAllFavorits()
+
+    public function clearAllFavorit()
     {
-        \favorits::clear();
-        session()->flash('success', 'Очищено успешно!');
-        return redirect()->route('favorits.list');
+        \favorit::clear();
+        session()->flash('success', 'All Item Favorit Clear Successfully !');
+        return redirect()->route('favorit.list');
     }
 }

@@ -23,7 +23,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($favoritsItems as $item)
+                                @foreach ($favoritItems as $item)
                                     <tr>
                                         <td class="hidden pb-4 md:table-cell" style="width:230px;">
                                             <a href="#">
@@ -38,7 +38,7 @@
                                         <td class="justify-center mt-6 md:justify-end md:flex">
                                             <div class="h-10 w-28">
                                                 <div class="relative flex flex-row w-full h-8">
-                                                    <form action="{{ route('favorits.update') }}" method="POST">
+                                                    <form action="{{ route('favorit.update') }}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $item->id}}" class="" >
                                                         <input type="number" name="quantity" value="{{ $item->quantity }}" 
@@ -49,7 +49,7 @@
                                             </div>
                                         </td>
                                         <td class="hidden text-right md:table-cell">
-                                            <form action="{{ route('favorits.remove') }}" method="POST">
+                                            <form action="{{ route('favorit.remove') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" value="{{ $item->id }}" name="id">
                                                 <button class="px-3 py-1 text-white bg-gray-800 shadow rounded-full">x</button>
@@ -60,11 +60,11 @@
                             </tbody>
                         </table>
                         <div class="flex justify-between items-center my-5">
-                            <div class="font-semibold text-2xl">Total: ${{ Favorits::getTotal() }}</div>
+                            <div class="font-semibold text-2xl">Total: ${{ Favorit::getTotal() }}</div>
                             <div>
-                                <form action="{{ route('favorits.clear') }}" method="POST">
+                                <form action="{{ route('favorit.clear') }}" method="POST">
                                     @csrf
-                                    <button class="px-6 py-2 text-sm  rounded shadow text-red-100 bg-gray-800">Очистить избранное</button>
+                                    <button class="px-6 py-2 text-sm  rounded shadow text-red-100 bg-gray-800">Очистить</button>
                                 </form>
                             </div>
                         </div>

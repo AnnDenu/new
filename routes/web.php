@@ -18,13 +18,18 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+/*Отзывы*/ 
+Route::get('/reviews', [\App\Http\Controllers\MainController::class, 'reviews'])->name('reviews');
+/*Отзывы*/ 
+Route::post('/reviews/check', [\App\Http\Controllers\MainController::class, 'reviews_check'])->name('reviews_check');
+
 //избранное
 Route::get('/', [CoursesController::class, 'coursesList'])->name('courses.list');
-Route::get('favotits', [FavoritsController::class, 'favoritsList'])->name('favorits.list');
-Route::post('favotits', [FavoritsController::class, 'addToFavorits'])->name('favorits.store');
-Route::post('update-favotits', [FavoritsController::class, 'updateFavorits'])->name('favorits.update');
-Route::post('remove', [FavoritsController::class, 'removeFavorits'])->name('favorits.remove');
-Route::post('clear', [FavoritsController::class, 'clearAllFavorits'])->name('favorits.clear');
+Route::get('favorit', [FavoritsController::class, 'favoritList'])->name('favorit.list');
+Route::post('favorit', [FavoritsController::class, 'addToFavorit'])->name('favorit.store');
+Route::post('update-favorit', [FavoritsController::class, 'updateFavorit'])->name('favorit.update');
+Route::post('remove', [FavoritsController::class, 'removeFavorit'])->name('favorit.remove');
+Route::post('clear', [FavoritsController::class, 'clearAllFavorit'])->name('favorit.clear');
 
 //авторизация
 Route::get('/dashboard', function () {
