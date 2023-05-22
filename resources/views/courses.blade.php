@@ -19,7 +19,8 @@
                         <input type="hidden" value="{{ $course->name }}" name="name">
                         <input type="hidden" value="{{ $course->image }}"  name="image">
                         <input type="hidden" value="1" name="quantity">
-                        <button class="px-4 py-1.5 text-white text-sm bg-gray-900 rounded">Добавить в избранное</button>
+                        <button class="px-4 py-1.5 text-white text-sm bg-gray-900 rounded" href = '/course'>Добавить в избранное</button>
+                        <button class="px-2 py-1 text-white text-sm bg-gray-700 rounded">Узнать подробнее</button>
                     </form>
                 </div>
                 

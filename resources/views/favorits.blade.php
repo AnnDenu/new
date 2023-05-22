@@ -19,7 +19,7 @@
                                         <span class="lg:hidden" title="Quantity">Qtd</span>
                                         <span class="hidden lg:inline">Quantity</span>
                                     </th>
-                                    <th class="hidden text-right md:table-cell"> Remove </th>
+                                    <th class="hidden text-right md:table-cell"> Повторить </th>
                                 </tr>
                             </thead>
                             <tbody>

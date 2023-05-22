@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -10,10 +11,16 @@ use MoonShine\Resources\MoonShineUserResource;
 use MoonShine\Resources\MoonShineUserRoleResource;
 
 class MoonShineServiceProvider extends ServiceProvider
-{
+{ 
     public function boot(): void
     {
+        Model::preventLazyLoading(!app()->isProduction());
+ 
+ 
         app(MoonShine::class)->menu([
+            MoonShineUserResource::class,
+            MoonShineUserRoleResource::class,
+            PostResource::class, 
             MenuGroup::make('moonshine::ui.resource.system', [
                 MenuItem::make('moonshine::ui.resource.admins_title', new MoonShineUserResource())
                     ->translatable()
@@ -26,5 +33,6 @@ class MoonShineServiceProvider extends ServiceProvider
             MenuItem::make('Documentation', 'https://laravel.com')
                 ->badge(fn() => 'Check'),
         ]);
-    }
+    
+}
 }
